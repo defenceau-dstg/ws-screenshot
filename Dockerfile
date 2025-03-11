@@ -7,7 +7,7 @@ RUN echo "Copying DSTG local settings"
 # COPY ./srce/99artifactory /etc/apt/apt.conf.d/99proxy
 # COPY ./srce/sources.list /etc/apt/sources.list
 
-# COPY /etc/apt /etc/
+COPY /etc/apt /etc/
 
 
 RUN echo "Copying Defence Certificates"
