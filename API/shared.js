@@ -46,7 +46,7 @@ module.exports.screnshotForUrlTab = async function (
       }
       if (browser == null) {
         browser = await puppeteer.launch({
-          timeout: 30000,
+          timeout: 10 * 30000,  // GB KLUDGE 2025-03
           headless: "new",
           args: args,
         });
@@ -61,6 +61,7 @@ module.exports.screnshotForUrlTab = async function (
       if (headers != null) {
         page.setExtraHTTPHeaders(headers);
       }
+      page.setDefaultTimeout(10 * 30000);  // GB timeout KLUDGE 2025-03
       await page.goto(url);
 
       await page.setViewport({
