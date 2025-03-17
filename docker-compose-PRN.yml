@@ -1,0 +1,12 @@
+services:
+
+  ws_screenshot:
+    # This container provides a Web Service for taking a screenshot of a web page.
+    # The target web page is specified by a URL.
+    # Implementation of the screenshot involves puppeteer and headless-chrome.
+    ws_screenshot: elastic_setup
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
