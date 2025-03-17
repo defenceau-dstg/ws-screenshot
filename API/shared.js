@@ -46,7 +46,7 @@ module.exports.screnshotForUrlTab = async function (
       }
       if (browser == null) {
         browser = await puppeteer.launch({
-          timeout: 10 * 30000,  // GB KLUDGE 2025-03
+          timeout: 30000,  // Headless Chromium Launch timeout in milliseconds
           headless: "new",
           args: args,
         });
@@ -61,7 +61,7 @@ module.exports.screnshotForUrlTab = async function (
       if (headers != null) {
         page.setExtraHTTPHeaders(headers);
       }
-      page.setDefaultTimeout(10 * 30000);  // GB timeout KLUDGE 2025-03
+      page.setDefaultTimeout(30000);    // Default timeout in milliseconds for loading a web page
       await page.goto(url);
 
       await page.setViewport({
@@ -133,7 +133,7 @@ module.exports.screnshotForUrlTab = async function (
       timeoutCloseBrowser = setTimeout(async () => {
         await browser.close();
         browser = null;
-      }, 30000);
+      }, 30000);    // Timeout in milliseconds to successfully close the Headless Chromium browser instance
       await page.close();
 
       let mimeType = finalMime;
@@ -152,7 +152,7 @@ module.exports.screnshotForUrlTab = async function (
         timeoutCloseBrowser = setTimeout(async () => {
           await browser.close();
           browser = null;
-        }, 30000);
+        }, 30000);  // Timeout in milliseconds to successfully close the Headless Chromium browser instance
       } catch (ex) {}
 
       var resp = {
