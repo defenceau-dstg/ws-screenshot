@@ -7,16 +7,21 @@ DEMO: https://backup15.terasp.net/
 
 &nbsp;
 
-# Quickstart with Docker
+# Quickstart with Docker (on the DSTG-PRN network)
 
-Run once:
+Run once (scripted):
 
-    docker pull elestio/ws-screenshot.slim
-    docker run -p 3000:3000 -it elestio/ws-screenshot.slim
+    ./docker-run.sh
+
+Run once (command-line):
+
+    docker login -u ${USER} artifactory.dsto.defence.gov.au  # login to artifactory
+    docker pull ia-test/ws-screenshot.slim:1.2.2  # pull the image from artifactory
+    docker run -p 3000:3000 -it ia-test/ws-screenshot.slim:1.2.2
 
 or Run as a docker service:
 
-    docker run --name ws-screenshot -d --restart always -p 3000:3000 -it elestio/ws-screenshot.slim
+    docker run --name ws-screenshot -d --restart always -p 3000:3000 -it ia-test/ws-screenshot.slim:1.2.2
 
 Then open http://yourIP:3000/ in your browser
 
@@ -24,17 +29,20 @@ Then open http://yourIP:3000/ in your browser
 # Requirements
 
 - Linux, Windows or Mac OS
-- Node 12+
+- Node 22+
 
-## Install Node.js 16
+## Install Node.js 22 (On Debian Linux)
+
+Note this has already been done in the published Docker image (see above).
+
     sudo apt -y install curl dirmngr apt-transport-https lsb-release ca-certificates
-    curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    curl -sL https://deb.nodesource.com/setup_22.x | sudo -E bash -
     sudo apt -y install nodejs
 
 ## Clone this repository
 Clone this repo then install NPM dependencies for ws-screenshot:
 
-    git clone git@github.com:elestio/ws-screenshot.git
+    git clone git@github.com:defenceau-dstg/ws-screenshot.git
     cd ws-screenshot
     npm install
 
@@ -77,8 +85,10 @@ Run with helm
 ## Run with proxy
 Add `PROXY_SERVER` env variable:
 
-    docker run --rm -p 3000:3000 --env PROXY_SERVER=socks5://host:port -it ws-screenshot
+    docker run --rm -p 3000:3000 --env PROXY_SERVER=http://localhost:3128 -it ws-screenshot
 
+> NOTE: Could not seem to get this working on the PRN.  HAIGS need for basic or NTLM auth might be the cause, however I tried to point at a local cntlm proxy and it still did not work.
+>
 > NOTE: Chromium ignores username and password in `--proxy-server` arg
 >
 > https://bugs.chromium.org/p/chromium/issues/detail?id=615947
