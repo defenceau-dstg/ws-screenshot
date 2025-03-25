@@ -1,0 +1,13 @@
+# 20240311T000000Z
+# 20250224T000000Z
+# 20250303T000000Z
+# 20250310T000000Z
+# 20250317T000000Z
+
+deb [arch=amd64 allow-insecure=yes trusted=yes] https://artifactory.dsto.defence.gov.au/artifactory/debian-snapshots-remote/archive/debian/20250317T000000Z trixie main
+deb [arch=amd64 allow-insecure=yes trusted=yes] https://artifactory.dsto.defence.gov.au/artifactory/debian-snapshots-remote/archive/debian/20250317T000000Z trixie-updates main
+deb [arch=amd64 allow-insecure=yes trusted=yes] https://artifactory.dsto.defence.gov.au/artifactory/debian-snapshots-remote/archive/debian-security/20250317T000000Z trixie-security main
+
+deb [arch=amd64 allow-insecure=yes trusted=yes] https://artifactory.dsto.defence.gov.au/artifactory/debian-snapshots-remote/archive/debian/20250317T000000Z bookworm main
+deb [arch=amd64 allow-insecure=yes trusted=yes] https://artifactory.dsto.defence.gov.au/artifactory/debian-snapshots-remote/archive/debian/20250317T000000Z bookworm-updates main
+deb [arch=amd64 allow-insecure=yes trusted=yes] https://artifactory.dsto.defence.gov.au/artifactory/debian-snapshots-remote/archive/debian-security/20250317T000000Z bookworm-security main

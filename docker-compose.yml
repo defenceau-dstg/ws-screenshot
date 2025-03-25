@@ -1,0 +1,13 @@
+services:
+
+  ws_screenshot:
+    # This container provides a Web Service for taking a screenshot of a web page.
+    # The target web page is specified by a URL.
+    # Implementation of the screenshot involves puppeteer and headless-chrome.
+    container_name: ws_screenshot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    restart: unless-stopped  # recommend only for production

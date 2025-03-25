@@ -1,0 +1,33 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ws-screenshot
+  title: Web Service Screenshot
+  description: |
+    A simple way to take a screenshot of a website by providing its URL. ws-screenshot include a simple web UI but also a REST API and a Websocket API to automate screenshots.
+  labels:
+    classification: OFFICIAL
+  annotations:
+    license: MIT
+    documentation-completeness: 100%
+    change-log-url: https://github.com/defenceau-dstg/ws-screenshot/CHANGELOG.md
+    health-check: 'true'
+    os: debian12-slim
+    architecture: amd64
+  tags:
+  - ws-screenshot  
+  - docker
+  - oci-image
+  - debian
+  - slim
+  - monitoring
+  links:
+  - url: https://github.com/elestio/ws-screenshot
+    title: ws-screenshot Github
+    icon: web
+spec:
+  type: oci-image
+  lifecycle: production
+  owner: hardened-images
+  dependsOn:
+  - component:nodejs-slim
