@@ -5,7 +5,18 @@ DEMO: https://backup15.terasp.net/
 
 ![](https://cf.appdrag.com/support-documentatio-cb1e1b/uploads/files/e76ed2f5-943e-4fac-b454-6ebb9208f7a6.gif)
 
-&nbsp;
+
+# DSTG-PRN fork
+
+This is a fork of github.com/elestio/ws-screenshot that has been modified to resolve critical vulnerabilities
+suitable for use on Defence networks.
+
+The Dockerfile and related `docker-*.sh` scripts are modified to work within the DSTG PRN.
+
+## Git branches
+  * DSTG-PRN - Development and testing 
+  * master - Stable releases
+  * upstream - This contains a snapshot of master on the forked repo.  The intention is for it to be updated when the upstream project releases a new version.  Changes will then be merged in the DSTG-PRN branch before a bew stable release is made in master.
 
 # Quickstart with Docker (on the DSTG-PRN network)
 
@@ -93,7 +104,7 @@ Add `PROXY_SERVER` env variable:
 >
 > https://bugs.chromium.org/p/chromium/issues/detail?id=615947
 
-&nbsp;
+
 # Usage
 
 ## REST API
@@ -122,7 +133,6 @@ var event = {
 You can check /public/js/client.js and /public/index.html for a sample on how to call the Websocket API
 
 
-&nbsp;
 # Supported parameters
 - url: full url to screenshot, must start with http:// or https://
 - resX: integer value for screen width, default: 1280
@@ -132,7 +142,6 @@ You can check /public/js/client.js and /public/index.html for a sample on how to
 - waitTime: integer value in milliseconds, indicate max time to wait for page resources to load, default: 100
 - headers: add extra headers to the request
 
-&nbsp;
 # Protect with an ApiKey
 
 You can protect the REST & WS APIs with an ApiKey, this is usefull if you want to protect your screenshot server from being used by anyone
